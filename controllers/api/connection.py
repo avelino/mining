@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from bottle import Bottle
+from bottle import Bottle, request
 from bottle.ext.mongo import MongoPlugin
 
 from utils import conf
@@ -20,7 +20,8 @@ connection_app.install(mongo)
 @connection_app.route('/', method='GET')
 @connection_app.route('/<slug>', method='GET')
 def connection_get(mongodb, slug=None):
-    return get(mongodb, collection, slug)
+    if request.is_ajax:
+        return get(mongodb, collection, slug)
 
 
 @connection_app.route('/', method='POST')
