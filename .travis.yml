@@ -6,6 +6,7 @@ services:
 cache:
   - pip
   - apt
+before_install: cp mining/mining.sample.ini mining/mining.ini
 install: make environment
 script: make test
 notifications:

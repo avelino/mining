@@ -15,7 +15,6 @@ environment:
 	@pip install numexpr==2.3
 	@python setup.py develop
 	@npm install gulp gulp-jshint
-	@mv mining/mining.sample.ini mining/mining.ini
 
 .PHONY: install
 install:

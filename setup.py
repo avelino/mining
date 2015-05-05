@@ -69,4 +69,6 @@ setup(name='mining',
       include_package_data=True,
       zip_safe=False,
       ext_modules=cythonize(["mining/utils/*.pyx"]),
-      data_files=[('mining', ['mining/mining.ini'])])
+      data_files=[('mining', ['mining/mining.ini']),
+                  ('mining/bin/demo', ['mining/bin/demo/base.sql',
+                                       'mining/bin/demo/people.sql'])])

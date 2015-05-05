@@ -25,17 +25,57 @@ Requirements
 * Bower (Install frontend libs, NodeJS depends)
 
 
+Automated install
+-----------
+
+First, you need to install `fig <http://www.fig.sh/install.html>`_ before proceed.
+
+**Then, copy the sample ini file to mining.ini**
+
+.. code:: bash
+
+    $ cp mining/mining.sample.fig.ini mining/mining.ini
+
+Run
+---
+
+.. code:: bash
+
+    fig up
+    fig run web python manage.py celery 
+    fig run web python manage.py scheduler
+
+It will create docker containers, then start downloading and compiling all the depenciences. So the first run can last an hour or two depending on your hardware and internet connection. Be patient and go outside to play with your cat.
+
+Running Demo in automated install
+------------
+
+.. code:: bash
+
+    fig run web python manage.py build_demo
+
+
+And now you can login with: username 'admin' and password 'admin'.
+
+Manual install
+-------
+
 Install dependencies
 -------
 
 .. code:: bash
-    
+
     $ sudo apt-get install mongodb-10gen redis-server nodejs nodejs-dev npm
     $ npm install bower
 
 
 If you use Mac OSX you can install all dependencies using `HomeBrew <http://brew.sh/>`_.
 
+**Then, copy the sample ini file to mining.ini**
+
+.. code:: bash
+
+    $ cp mining/mining.sample.ini mining/mining.ini
 
 Install Open Mining
 -------
@@ -48,29 +88,12 @@ Install Open Mining
     $ cd mining
     $ git submodule update
 
-**Run pip install on project requirements**
+**Run make install on project**
 
 .. code:: bash
 
-    $ pip install -r requirements.txt
-
-**Copy the sample ini file to mining.ini**
-
-.. code:: bash
-
-    $ cp mining/mining.sample.ini mining/mining.ini    
-
-**Install it**
-
-.. code:: bash
-
-    $ python setup.py install
-
-**Install numexpr**
-
-.. code:: bash
-
-    $ pip install numexpr==2.3
+    $ make environment
+    $ make install
 
 **Install javascript assets using Bower**
 
@@ -100,7 +123,7 @@ Run
     python manage.py scheduler
 
 
-Running Demo
+Running Demo in manual install
 ------------
 
 .. code:: bash

@@ -1,0 +1,15 @@
+web:
+  build: .
+  command: python manage.py runserver
+  volumes:
+    - .:/code
+  ports:
+    - "8888:8888"
+  links:
+    - datawarehouse
+    - admindb
+datawarehouse:
+  image: redis
+admindb:
+  image: mongo
+
